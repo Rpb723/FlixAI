@@ -11,7 +11,7 @@ import { YouTubeProps } from "react-youtube";
 import { YT, MovieDetails } from "../types";
 
 function HomeBase() {
-  const [filteredMovies, setFilteredMovies] = useState<any>([]);
+  const [filteredMovies, setFilteredMovies] = useState([]);
   const [theater, setTheather] = useState(false);
   const [trailerUrl, setTrailerUrl] = useState("");
   const [currentMovie, setCurrentMovie] = useState("");
