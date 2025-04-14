@@ -22,6 +22,7 @@ export async function GET(request: Request) {
     }); // Fetch movie data from the provided URL
     return NextResponse.json(response.data); // Send AI response back to frontend
   } catch (error) {
+    console.error(error);
     return NextResponse.json(
       { error: "Failed to fetch movie data" },
       { status: 500 }

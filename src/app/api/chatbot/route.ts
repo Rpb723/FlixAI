@@ -23,6 +23,7 @@ export async function POST(req: Request) {
     const aiResponse = completion.choices[0]?.message?.content?.trim();  
     return NextResponse.json({ message: aiResponse }); // Send AI response back to frontend
   } catch (error) {
+    console.error(error);
     return NextResponse.json({ error: 'Error with AI request' }, { status: 500 });
   }
 }
