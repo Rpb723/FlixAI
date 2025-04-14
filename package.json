@@ -9,10 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/cache": "^11.14.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^7.0.1",
+    "@mui/material-nextjs": "^7.0.0",
+    "axios": "^1.8.4",
+    "movie-trailer": "^3.2.2",
     "next": "15.2.4",
+    "openai": "^4.90.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "sass": "^1.86.0"
+    "react-youtube": "^10.1.0",
+    "sass": "^1.86.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

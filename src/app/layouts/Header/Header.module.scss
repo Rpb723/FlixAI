@@ -1,0 +1,18 @@
+.header {
+  position: fixed;
+  top: 0;
+  padding: 10px 20px;
+  width: 100%;
+  z-index: 1;
+  transition: all 0.5s ease-in-out;
+  background: #0000004f;
+
+  &_image {
+    width: 7rem;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,111 @@
+.homebase {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  transition: 1s all ease-in-out;
+  background-color: #000000;
+  background-image: url("../assets/images/movie-background-red.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &__chat,
+  &__videos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border: 1px solid black;
+    transition: 1s all ease-in-out;
+    overflow-y: hidden;
+  }
+
+  &__chat {
+    flex: 0.6;
+    position: relative;
+    object-fit: contain;
+    box-shadow: rgb(240 46 46 / 40%) 0px 5px, rgb(240 46 46 / 30%) 0px 10px,
+      rgb(240 46 46 / 20%) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px,
+      rgb(240 46 46 / 5%) 0px 25px;
+
+    &_main {
+      transition: 1s all ease-in-out;
+      height: 80%;
+      width: 50%;
+      margin: 0 1rem;
+    }
+
+    &_movie {
+      transition: 1s all ease-in-out;
+      height: 80%;
+      width: 50%;
+      margin: 0 1rem;
+    }
+
+    &_hideMovie {
+      opacity: 0;
+      width: 0;
+      padding: 0;
+      margin: 0;
+      height: 0;
+      transition: 1s all ease-in-out;
+
+      &_screen {
+        transition: 1s all ease-in-out;
+        background: transparent;
+        height: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        font-size: 0;
+      }
+    }
+  }
+
+  &__videos {
+    flex: 0.4;
+  }
+
+  .movie {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Media query for mobile devices */
+@media (max-width: 800px) {
+  .homebase {
+    &__video,
+    &__chat {
+      padding-top: 10%;
+    }
+    &__chat {
+      flex-direction: column-reverse;
+      flex: 0.6;
+
+      &_main,
+      &_movie {
+        transition: 1s all ease-in-out;
+        height: 50%;
+        width: 100%;
+        margin: 0 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 0;
+      }
+
+      &_main {
+        height: 40%;
+      }
+
+      &_movies {
+        height: 60%;
+      }
+    }
+
+    &__videos {
+      flex: 0.4;
+    }
+  }
+}
