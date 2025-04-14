@@ -83,6 +83,7 @@ function HomeBase() {
         }
       })
       .catch((err) => {
+        console.error(err);
         setTrailerUrl("");
         setTheather(false);
       });
