@@ -9,7 +9,7 @@ import { Movie } from "../../types";
 
 function Videos({ videos, onSelectedVideo }) {
   const base_url = "https://image.tmdb.org/t/p/original/";
-  const [movieList, setMovieList] = useState<any>([]);
+  const [movieList, setMovieList] = useState([]);
 
   useEffect(() => {
     const baseMovieSet = [

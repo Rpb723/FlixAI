@@ -33,5 +33,5 @@ export type MovieDetails = {
 };
 
 export type YT = {
-  Player: any;
+  Player: unknown;
 };
