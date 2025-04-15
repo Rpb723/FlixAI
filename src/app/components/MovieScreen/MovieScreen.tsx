@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./MovieScreen.module.scss";
 import Youtube from "react-youtube";
+import { MovieScreenProps } from "@/app/types";
 
-function MovieScreen({ trailerUrl, currentMovie, className, onReady }) {
+function MovieScreen({ trailerUrl, currentMovie , className , onReady }: MovieScreenProps) {
   const youtubeOpts = {
     height: "100%",
     width: "100%",

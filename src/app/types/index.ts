@@ -1,3 +1,5 @@
+import { YouTubeProps } from "react-youtube";
+
 export type Movie = {
   id: number;
   poster_path: string;
@@ -6,6 +8,7 @@ export type Movie = {
   original_name?: string;
   genre?: string;
   release_date?: string;
+  backdrop_path?: string;
   [key: string]: unknown;
 };
 
@@ -33,5 +36,19 @@ export type MovieDetails = {
 };
 
 export type YT = {
-  Player: unknown;
+  Player: {
+    pauseVideo: () => void;
+    seekTo: (seconds: number, allowSeekAhead: boolean) => void;
+  };};
+
+export type MovieScreenProps = {
+  trailerUrl: string;
+  currentMovie: string;
+  className: string;
+  onReady: YouTubeProps["onReady"];
 };
+
+export type VideoSet = {
+  videos: Movie[]
+  onSelectedVideo: (selectedMovie: Movie["title"]) => void;
+}

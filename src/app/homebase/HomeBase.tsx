@@ -8,10 +8,10 @@ import axios from "axios";
 import MovieScreen from "../components/MovieScreen/MovieScreen";
 import movieTrailer from "movie-trailer";
 import { YouTubeProps } from "react-youtube";
-import { YT, MovieDetails } from "../types";
+import { YT, MovieDetails, Movie } from "../types";
 
 function HomeBase() {
-  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState<Movie[]>([]);
   const [theater, setTheather] = useState(false);
   const [trailerUrl, setTrailerUrl] = useState("");
   const [currentMovie, setCurrentMovie] = useState("");
@@ -67,26 +67,29 @@ function HomeBase() {
     setTheather(false);
   };
 
-  const handleSelectedMovie = (selectedMovie) => {
-    movieTrailer(selectedMovie)
-      .then((url) => {
-        if (url) {
-          const urlParam = new URLSearchParams(new URL(url).search);
-          const videoId = urlParam.get("v");
+  const handleSelectedMovie = (selectedMovie: Movie["title"]) => {
+    if (selectedMovie) {
+      movieTrailer(selectedMovie)
+        .then((url) => {
+          const urlToProcess = Array.isArray(url) ? url[0] : url;
 
-          setTrailerUrl(videoId || "");
-          setCurrentMovie(selectedMovie);
-          setTheather(true);
-        } else {
-          //No trailers found for this movie
-          handleStopAndReset();
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        setTrailerUrl("");
-        setTheather(false);
-      });
+          if (urlToProcess) {
+            const videoId = new URL(urlToProcess).searchParams.get("v");
+
+            setTrailerUrl(videoId || "");
+            setCurrentMovie(selectedMovie);
+            setTheather(true);
+          } else {
+            //No trailers found for this movie
+            handleStopAndReset();
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+          setTrailerUrl("");
+          setTheather(false);
+        });
+    }
   };
 
   return (

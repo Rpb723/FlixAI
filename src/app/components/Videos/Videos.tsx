@@ -5,71 +5,71 @@ import styles from "./Videos.module.scss";
 import DynamicRow from "./DynamicRow/DynamicRow";
 import Image from "next/image";
 import flixAiNoPoster from "@/app/assets/images/flix-ai-ticket.png";
-import { Movie } from "../../types";
+import { Movie, VideoSet } from "../../types";
 
-function Videos({ videos, onSelectedVideo }) {
+function Videos({ videos, onSelectedVideo }: VideoSet) {
   const base_url = "https://image.tmdb.org/t/p/original/";
-  const [movieList, setMovieList] = useState([]);
+  const [movieList, setMovieList] = useState<Movie[]>([]);
 
   useEffect(() => {
-    const baseMovieSet = [
+    const baseMovieSet: Movie[] = [
       {
-        id: "23",
+        id: 23,
         poster_path: "",
         title: "Flix-AI",
       },
       {
-        id: "24",
+        id: 24,
         poster_path: "",
         title: "Flix-AI",
       },
       {
-        id: "25",
+        id: 25,
         poster_path: "",
         title: "Flix-AI",
       },
       {
-        id: "26",
+        id: 26,
         poster_path: "",
         title: "Flix-AI",
       },
       {
-        id: "27",
+        id: 27,
         poster_path: "",
         title: "Flix-AI",
       },
       {
-        id: "28",
+        id: 28,
         poster_path: "",
         title: "Flix-AI",
       },
       {
-        id: "29",
+        id: 29,
         poster_path: "",
         title: "Flix-AI",
       },
       {
-        id: "30",
+        id: 30,
         poster_path: "",
         title: "Flix-AI",
       },
       {
-        id: "31",
+        id: 31,
         poster_path: "",
         title: "Flix-AI",
       },
       {
-        id: "32",
+        id: 32,
         poster_path: "",
         title: "Flix-AI",
       },
       {
-        id: "33",
+        id: 33,
         poster_path: "",
         title: "Flix-AI",
       },
       {
-        id: "34",
+        id: 34,
         poster_path: "",
         title: "Flix-AI",
       },
@@ -77,7 +77,7 @@ function Videos({ videos, onSelectedVideo }) {
     setMovieList(videos?.length ? videos : baseMovieSet);
   }, [videos]);
 
-  const movieClicked = (movie: Movie) => {
+  const movieClicked = (movie: Movie['title']) => {
     onSelectedVideo(movie);
   };
 
@@ -101,13 +101,13 @@ function Videos({ videos, onSelectedVideo }) {
                     ? `${base_url}${movie.poster_path}`
                     : flixAiNoPoster
                 }
-                alt={movie.title}
+                alt={movie.title || ''}
                 fill={true}
                 className={styles.videos__rows_ai__image_container_image}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 onClick={() =>
                   movieClicked(
-                    movie?.title || movie?.name || movie?.original_name
+                    movie?.title || movie?.name || movie?.original_name || ""
                   )
                 }
               />

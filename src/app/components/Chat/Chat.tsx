@@ -20,7 +20,7 @@ function Chat({
     messagesRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [chatLog]);
 
-  const handleSendMessage = async (e: Event) => {
+  const handleSendMessage = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (message.trim()) {
       const updatedChatLog = [...chatLog, `You: ${message}`];
